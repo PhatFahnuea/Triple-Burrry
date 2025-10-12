@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F9F5F0;
+  color: #000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid #4A3F35;
+  background-color: #f9f6f1;
+  padding: 10px 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.navbar img {
+  width: 150px;
+  height: auto;
+  margin-right: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4A3F35;
+  font-size: 14px;
+  font-weight: 550;
+  transition: 0.3s;
+  letter-spacing: 0.5px;
+}
+
+.nav-links a:hover {
+  color: #6C7A47;
+}
+
+.nav-links a.active {
+  color: #6C7A47;
+  border-bottom: 3px solid #6C7A47;
+  border-radius: 2px;
+  padding-bottom: 3px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: #C2C0A6;
+  border: 1px solid #4A3F35;
+  border-radius: 2px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 150px;
+  z-index: 999;
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.level-1 {
+  top: 19px;
+  left: 0;
+}
+
+.level-2,.level-3 {
+    top: 0;
+    margin-left: 149.9px;
+}
+
+.dropdown-menu li a {
+  border-bottom: 1px solid #4A3F35;
+  display: block;
+  padding: 8px 15px;
+  color: #2e2e2e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #A5A37C;
+  color: #fff;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #D6D7CF;
+  border: 1px solid #4A3F35;
+  border-radius: 20px;
+  padding: 4px 10px;
+  height: 32px;
+  margin-right: 20px;
+  transition: all 0.3s ease;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 5px;
+  font-size: 14px;
+  color: #4A3F35;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.search-bar img {
+  width: 20px;
+  height: 20px;
+  margin-right: 0;
+  filter: invert(20%) sepia(8%) saturate(600%) hue-rotate(15deg);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.search-bar button:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.icon-link img {
+  width: 24px;
+  height: 24px;
+  filter: invert(20%) sepia(8%) saturate(600%) hue-rotate(15deg);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.icon-link:hover img {
+  transform: scale(1.1);
+  opacity: 0.8;
+  filter: invert(35%) sepia(8%) saturate(900%) hue-rotate(45deg);
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+}
+
+.description b {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.about-section {
+  background-color: #f9f6f1;
+  padding: 20px 100px;
+}
+
+.about-content {
+  text-align: left;
+  color: #4A3F35;
+  padding: 30px 40px;
+  background-color: #F4F1E8;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d3cfc7;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.about-content h1 {
+  font-family: 'Times New Roman', Times, serif;
+  color: #4A3F35;
+  font-size: 80px;
+  margin-top: 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #6C7A47;
+  font-weight: 600;
+}
+
+.description,
+.mission {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-gallery {
+  display: flex;
+  justify-content:left;
+  gap: 99px;
+  flex-wrap: wrap;
+  border-top: 1.5px solid #4A3F35;
+  margin-top: 30px;
+}
+
+.about-card {
+  width: 220px;
+  height: 280px;
+  background-color: #d9d9d4;
+  border-radius: 5px;
+  margin-top: 30px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card img {
+  width: 250px;
+  height: 350px;
+  border-radius: 5px;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}

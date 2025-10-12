@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple Burrry</title>
+    <link rel="stylesheet" href="../css/dash.css" />
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-title">TRIPLE BURRRY ADMIN</span>
+        </div>
+        <nav class="menu">
+            <a class="menu-item" href="../admin/Dashboard.html">
+                <span class="mi-dot"></span> Dashboard
+            </a>
+            <a class="menu-item" href="../admin/Product.html">
+                <span class="mi-box"></span> Products
+            </a>
+            <a class="menu-item" href="../admin/Order.html">
+                <span class="mi-clipboard"></span> Orders
+            </a>
+            <a class="menu-item" href="../admin/User.html">
+                <span class="mi-user"></span> Users
+            </a>
+            <div class="menu-sep"></div>
+            <a class="menu-item danger" href="../auth/signin.html">
+                <span class="mi-logout"></span> Log out
+            </a>
+        </nav>
+    </aside>
+    <main class="main">
+        <header class="topbar">
+            <form class="search" onsubmit="return false;">
+                <span class="search-icon">🔍</span>
+                <input type="search" placeholder="Search" aria-label="Search" />
+            </form>
+
+            <div class="topbar-right">
+                <button class="icon-btn" aria-label="Notifications">🔔</button>
+                <div class="profile">
+                    <img src="../img/etc/cutie.JPG" alt="Profile" />
+                    <div class="profile-meta">
+                        <strong>Fahnuea</strong>
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="board">
+            <header class="between" style="margin-bottom:-6px;">
+                <h2 style="font-size:22px;">All Products</h2>
+                <a class="btn btn-dark" href="#">
+                    ⊕ Add New Product
+                </a>
+            </header>
+
+            <div class="table-card">
+                <div class="table-wrap">
+                    <table class="table" id="products-table">
+                        <thead>
+                            <tr>
+                                <th style="width:140px;">Image</th>
+                                <th>Product Name</th>
+                                <th style="width:120px;" class="text-right">Price</th>
+                                <th style="width:140px;">Stock</th>
+                                <th style="width:100px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody><!-- filled by JS --></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer"><small>© 2025 Triple Burrry Admin</small></footer>
+    </main>
+
+    <script src="../JS/adminProducts.js" ></script>
+
+    <!-- ทำเมนู sidebar ให้ active อัตโนมัติ -->
+    <script>
+        (function () {
+            const current = location.pathname.split('/').pop().toLowerCase() || 'dashboard.html';
+            document.querySelectorAll('.menu a.menu-item').forEach(a => {
+                const href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+                if (href === current) {
+                    a.classList.add('active');
+                    a.setAttribute('aria-current', 'page');
+                } else {
+                    a.classList.remove('active');
+                    a.removeAttribute('aria-current');
+                }
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

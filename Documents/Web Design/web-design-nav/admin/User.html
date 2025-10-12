@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Triple Burrry</title>
+  <link rel="stylesheet" href="../css/dash.css" />
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-title">TRIPLE BURRRY ADMIN</span>
+    </div>
+    <nav class="menu">
+      <a class="menu-item" href="./Dashboard.html"><span class="mi-dot"></span> Dashboard</a>
+      <a class="menu-item" href="./Product.html"><span class="mi-box"></span> Products</a>
+      <a class="menu-item" href="./Order.html"><span class="mi-clipboard"></span> Orders</a>
+      <a class="menu-item" href="./User.html"><span class="mi-user"></span> Users</a>
+      <div class="menu-sep"></div>
+      <a class="menu-item danger" href="../auth/signin.html"><span class="mi-logout"></span> Log out</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <form class="search" onsubmit="return false;">
+        <span class="search-icon">🔍</span>
+        <input type="search" placeholder="Search users" aria-label="Search users"/>
+      </form>
+      <div class="topbar-right">
+        <button class="icon-btn" aria-label="Notifications">🔔</button>
+        <div class="profile">
+          <img src="../img/etc/cutie.JPG" alt="Profile" />
+          <div class="profile-meta">
+            <strong>Fahnuea</strong>
+            <span>Admin</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Board -->
+    <section class="board">
+      <!-- Account summary -->
+      <section class="cards" id="cards-root">
+
+        <article class="card">
+          <header class="card-head"><h3>Users Snapshot</h3></header>
+          <div class="stat">
+            <div class="stat-icon">👥</div>
+            <div class="stat-main">
+              <div class="stat-value" id="u-total">0</div>
+              <div class="stat-diff up">total</div>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="stat-icon">✅</div>
+            <div class="stat-main">
+              <div class="stat-value" id="u-active">0</div>
+              <div class="stat-diff up">active</div>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="stat-icon">⛔</div>
+            <div class="stat-main">
+              <div class="stat-value" id="u-deactivated">0</div>
+              <div class="stat-diff">deactivated</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Users table (เฉพาะลูกค้า) -->
+      <section class="card">
+        <header class="card-head between">
+          <h3>All Users</h3>
+          <button class="more" aria-label="more">⋮</button>
+        </header>
+        <div class="table-wrap">
+          <table class="table" id="users-table">
+            <thead>
+              <tr>
+                <th style="width:40px;"><input type="checkbox" aria-label="select all"></th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th class="num">Total Orders</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <small>© 2025 Triple Burrry Admin — Template</small>
+    </footer>
+  </main>
+
+  <!-- Active menu auto -->
+  <script>
+    (function () {
+      const current = location.pathname.split('/').pop().toLowerCase() || 'user.html';
+      document.querySelectorAll('.menu a.menu-item').forEach(a => {
+        const href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+        if (href === current) { a.classList.add('active'); a.setAttribute('aria-current','page'); }
+        else { a.classList.remove('active'); a.removeAttribute('aria-current'); }
+      });
+    })();
+  </script>
+
+  <!-- Mock render for design -->
+  <script>
+    // โชว์เฉพาะลูกค้า (ไม่รวม Admin)
+    const users = [
+      { name:'Kavin',   email:'kavin@example.com',   status:'Active',       orders:12, avatar:'https://i.pravatar.cc/56?img=11' },
+      { name:'Komael',  email:'komael@example.com',  status:'Active',       orders: 2, avatar:'https://i.pravatar.cc/56?img=12' },
+      { name:'Nikhil',  email:'nikhil@example.com',  status:'Active',       orders: 7, avatar:'https://i.pravatar.cc/56?img=13' },
+      { name:'Shivam',  email:'shivam@example.com',  status:'Deactivated',  orders: 0, avatar:'https://i.pravatar.cc/56?img=14' },
+    ];
+
+    const badge = s => {
+      const key = s.toLowerCase();
+      if (key === 'active')       return '<span class="badge badge--active"><i></i>Active</span>';
+      if (key === 'deactivated')  return '<span class="badge badge--deactivated"><i></i>Deactivated</span>';
+      return s;
+    };
+
+    function renderUsersTable(){
+      const tb = document.querySelector('#users-table tbody');
+      if (!tb) return;
+
+      tb.innerHTML = users.map(u => `
+        <tr>
+          <td><input type="checkbox"/></td>
+          <td style="display:flex;align-items:center;gap:10px;">
+            <img src="${u.avatar}" alt="${u.name}" style="width:32px;height:32px;border-radius:8px;object-fit:cover;border:1px solid var(--line);">
+            ${u.name}
+          </td>
+          <td>${u.email}</td>
+          <td>${badge(u.status)}</td>
+          <td class="num">${u.orders}</td>
+        </tr>
+      `).join('');
+
+      // snapshot counters
+      const elTotal = document.getElementById('u-total');
+      const elAct   = document.getElementById('u-active');
+      const elDeact = document.getElementById('u-deactivated');
+
+      if (elTotal) elTotal.textContent = users.length;
+      if (elAct)   elAct.textContent   = users.filter(x=>x.status==='Active').length;
+      if (elDeact) elDeact.textContent = users.filter(x=>x.status==='Deactivated').length;
+    }
+
+    document.addEventListener('DOMContentLoaded', renderUsersTable);
+  </script>
+
+  <script>
+    (function () {
+      const current = location.pathname.split('/').pop().toLowerCase() || 'dashboard.html';
+      document.querySelectorAll('.menu a.menu-item').forEach(a => {
+        const href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+        if (href === current) {
+          a.classList.add('active');
+          a.setAttribute('aria-current', 'page');
+        } else {
+          a.classList.remove('active');
+          a.removeAttribute('aria-current');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
