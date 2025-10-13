@@ -23,7 +23,7 @@ const statusDot = (s) => {
     <tr>
       <td>
         <div class="row-flex">
-          <img src="../img/etc/cutie.JPG" alt="Profile" 
+          <img src="../img/etc/cutie.png" alt="Profile" 
                onerror="this.src='../img/placeholder.png'">
           <span>${p.name}</span>
         </div>
