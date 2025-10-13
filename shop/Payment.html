@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/Shop.css">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="../img/Homeimg/Loco_tripple.png" alt="Loco" />
+        <ul class="nav-links">
+            <li><a href="../Home.html">HOME</a></li>
+            <li class="dropdown">
+                <a href="./ShopMain.html" class="active">SHOP</a>
+                <ul class="dropdown-menu level-1">
+                    <li class="dropdown">
+                        <a href="#">Male</a>
+                        <ul class="dropdown-menu level-2">
+                            <li class="dropdown">
+                                <a href="#">Clothing</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Male/T-shirtMale.html">T-shirt</a></li>
+                                    <li><a href="../shop/Male/TankTopMale.html">Tank Top</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Pants</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Male/JeansMale.html">Jeans</a></li>
+                                    <li><a href="../shop/Male/SkirtMale.html">Skirt</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Accessories</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Male/BagMale.html">Bag</a></li>
+                                    <li><a href="../shop/Male/BraceletMale.html">Bracelet</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Female</a>
+                        <ul class="dropdown-menu level-2">
+                            <li class="dropdown">
+                                <a href="#">Clothing</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Female/T-shirt.html">T-shirt</a></li>
+                                    <li><a href="../shop/Female/TankTop.html">Tank Top</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Pants</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Female/Jeans.html">Jeans</a></li>
+                                    <li><a href="../shop/Female/Skirt.html">Skirt</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Accessories</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Female/Bag.html">Bag</a></li>
+                                    <li><a href="../shop/Female/Bracelet.html">Bracelet</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="../Collection.html">COLLECTION</a></li>
+            <li><a href="../AboutUs.html">ABOUT US</a></li>
+        </ul>
+
+        <div class="icons">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." />
+                <button type="submit">
+                    <img src="https://img.icons8.com/?size=100&id=LnlEQU5pxlIU&format=png&color=000000"
+                        alt="Search Icon">
+                </button>
+            </div>
+
+            <a href="./MyCart.html" class="icon-link">
+                <img src="https://img.icons8.com/?size=100&id=15893&format=png&color=000000" alt="Cart Icon">
+            </a>
+
+            <a href="./Profile.html" class="icon-link">
+                <img src="https://img.icons8.com/?size=100&id=15265&format=png&color=000000" alt="Profile Icon">
+            </a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="layout">
+            <!-- ซ้าย: ฟอร์ม -->
+            <section class="panel">
+                <h1 class="checkout-title">Delivery</h1>
+
+                <form id="checkout-form" class="form" novalidate>
+                    <div class="field">
+                        <select class="select" id="country" required>
+                            <option value="">Country / Region</option>
+                            <option>Thailand</option>
+                            <option>Singapore</option>
+                            <option>Malaysia</option>
+                        </select>
+                    </div>
+
+                    <div class="row-2">
+                        <div class="field"><input id="first" class="input" placeholder="First Name" required></div>
+                        <div class="field"><input id="last" class="input" placeholder="Last Name" required></div>
+                    </div>
+
+                    <div class="field"><input id="address" class="input" placeholder="Address" required></div>
+
+                    <div class="row-2">
+                        <div class="field"><input id="city" class="input" placeholder="City" required></div>
+                        <div class="field"><input id="postal" class="input" placeholder="Postal Code" required></div>
+                    </div>
+
+                    <label class="save">
+                        <input type="checkbox" id="saveinfo">
+                        Save This Info For Future
+                    </label>
+
+                    <button class="btn paybar" id="pay-btn" type="submit">Pay Now</button>
+                </form>
+            </section>
+
+            <!-- ขวา: สรุปคำสั่งซื้อ -->
+            <aside class="panel summary">
+                <h2>Order Summary</h2>
+                <hr class="sep" />
+                <div id="summary-list" class="summary-box"></div>
+            </aside>
+        </div>
+    </main>
+
+    <script src="../js/products.js"></script>
+    <script src="../js/Checkout.js"></script>
+    
+</body>
+</html>

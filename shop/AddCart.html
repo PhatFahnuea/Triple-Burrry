@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/Shop.css">
+  <link rel="stylesheet" href="../css/cart.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="../img/Homeimg/Loco_tripple.png" alt="Loco" />
+        <ul class="nav-links">
+            <li><a href="../Home.html">HOME</a></li>
+            <li class="dropdown">
+                <a href="./ShopMain.html" class="active">SHOP</a>
+                <ul class="dropdown-menu level-1">
+                    <li class="dropdown">
+                        <a href="#">Male</a>
+                        <ul class="dropdown-menu level-2">
+                            <li class="dropdown">
+                                <a href="#">Clothing</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Male/T-shirtMale.html">T-shirt</a></li>
+                                    <li><a href="../shop/Male/TankTopMale.html">Tank Top</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Pants</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Male/JeansMale.html">Jeans</a></li>
+                                    <li><a href="../shop/Male/SkirtMale.html">Skirt</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Accessories</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Male/BagMale.html">Bag</a></li>
+                                    <li><a href="../shop/Male/BraceletMale.html">Bracelet</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Female</a>
+                        <ul class="dropdown-menu level-2">
+                            <li class="dropdown">
+                                <a href="#">Clothing</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Female/T-shirt.html">T-shirt</a></li>
+                                    <li><a href="../shop/Female/TankTop.html">Tank Top</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Pants</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Female/Jeans.html">Jeans</a></li>
+                                    <li><a href="../shop/Female/Skirt.html">Skirt</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Accessories</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="../shop/Female/Bag.html">Bag</a></li>
+                                    <li><a href="../shop/Female/Bracelet.html">Bracelet</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="../Collection.html">COLLECTION</a></li>
+            <li><a href="../AboutUs.html">ABOUT US</a></li>
+        </ul>
+
+        <div class="icons">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." />
+                <button type="submit">
+                    <img src="https://img.icons8.com/?size=100&id=LnlEQU5pxlIU&format=png&color=000000"
+                        alt="Search Icon">
+                </button>
+            </div>
+
+            <a href="./MyCart.html" class="icon-link">
+                <img src="https://img.icons8.com/?size=100&id=15893&format=png&color=000000" alt="Cart Icon">
+            </a>
+
+            <a href="./Profile.html" class="icon-link">
+                <img src="https://img.icons8.com/?size=100&id=15265&format=png&color=000000" alt="Profile Icon">
+            </a>
+        </div>
+    </nav>
+
+    <main class="wrap">
+    <!-- บอก sku ด้วย data-sku (จะถูกเติมโดย JS จาก ?id) -->
+    <article class="detail" data-price="1990" data-sku="">
+      <div class="frame">
+        <img
+          src="img/placeholder-square.png"
+          alt="product image"
+          referrerpolicy="no-referrer"
+          onerror="this.src='img/placeholder-square.png'">
+      </div>
+
+      <div class="info">
+        <h1>Loading...</h1>
+        <div class="price">฿ 0</div>
+
+        <div class="desc">กำลังโหลดรายละเอียดสินค้า…</div>
+
+        <div class="controls">
+          <!-- ใช้ qty--tall ให้เข้ากับสไตล์ร่วม -->
+          <div class="qty qty--tall">
+            <button class="minus" aria-label="decrease">−</button>
+            <div class="val" aria-live="polite">1</div>
+            <button class="plus" aria-label="increase">+</button>
+          </div>
+
+          <button class="btn add">Add to cart</button>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- ต้องโหลดสินค้ากลาง + logic หน้านี้ -->
+  <script src="../js/products.js"></script>
+  <script src="../js/addcart.js"></script>
+
+</body>
+
+</html>
