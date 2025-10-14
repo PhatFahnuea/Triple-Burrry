@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triple Burrry — New / Edit Product</title>
+    <link rel="stylesheet" href="../css/dash.css" />
+    <style>
+        /* ===== Base ===== */
+        :root {
+            --bg: #f7f5f3;
+            --card: #ffffff;
+            --ink: #222;
+            --muted: #7c7c7c;
+            --ring: #8c9871;
+            --line: #e9e5e1;
+            --btn: #111;
+            --btn-hover: #222;
+        }
+
+        body {
+            background: var(--bg);
+        }
+
+        /* ===== Card / Page ===== */
+        .page {
+            padding: 24px
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .06);
+            padding: 20px 20px 16px;
+            border: 1px solid var(--line);
+        }
+
+        .card h2 {
+            margin: 0 0 14px;
+            font-size: 22px;
+            letter-spacing: .2px
+        }
+
+        /* ===== Form Grid ===== */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1.25fr .9fr;
+            /* ซ้ายกว้างกว่าหน่อย */
+            gap: 18px;
+        }
+
+        @media (max-width: 900px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== Fields ===== */
+        .row {
+            display: grid;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .row label {
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 14px
+        }
+
+        input,
+        textarea,
+        select {
+            padding: 12px 14px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            font: inherit;
+            background: #fff;
+            transition: border-color .15s ease, box-shadow .15s ease;
+        }
+
+        textarea {
+            min-height: 96px;
+            resize: vertical
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #b3b3b3
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--ring);
+            box-shadow: 0 0 0 3px rgba(140, 152, 113, .18);
+        }
+
+        /* hint ข้าง label */
+        .hint {
+            color: #9b968f;
+            font-size: 12px
+        }
+
+        /* ===== Preview Panel ===== */
+        .preview-card {
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 14px;
+            background: #fff;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, .05);
+        }
+
+        .preview-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        .preview-img-wrap {
+            background:
+                linear-gradient(45deg, #faf8f6 25%, transparent 25%),
+                linear-gradient(-45deg, #faf8f6 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #faf8f6 75%),
+                linear-gradient(-45deg, transparent 75%, #faf8f6 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+            border: 1px dashed #ddd;
+            border-radius: 12px;
+            padding: 8px;
+        }
+
+        .img-preview {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* ===== Buttons ===== */
+        .btns {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin-top: 16px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        .btn-ghost {
+            background: #fff;
+            border: 1px solid var(--line);
+            color: #444
+        }
+
+        .btn-dark {
+            background: var(--btn);
+            color: #fff
+        }
+
+        .btn-dark:hover {
+            background: var(--btn-hover)
+        }
+
+        .btn-danger {
+            background: #d32f2f;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="brand"><span class="brand-title">TRIPLE BURRRY ADMIN</span></div>
+        <nav class="menu">
+            <a class="menu-item" href="../admin/Dashboard.html"><span class="mi-dot"></span> Dashboard</a>
+            <a class="menu-item" href="../admin/Product.html"><span class="mi-box"></span> Products</a>
+            <a class="menu-item" href="../admin/Order.html"><span class="mi-clipboard"></span> Orders</a>
+            <a class="menu-item" href="../admin/User.html"><span class="mi-user"></span> Users</a>
+            <div class="menu-sep"></div>
+            <a class="menu-item danger" href="../auth/signin.html"><span class="mi-logout"></span> Log out</a>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div></div>
+            <div class="topbar-right">
+                <div class="profile">
+                    <img src="../img/etc/cutie.png" alt="Profile" />
+                    <div class="profile-meta"><strong>Fahnuea</strong><span>Admin</span></div>
+                </div>
+            </div>
+        </header>
+
+        <section class="page">
+            <div class="card">
+                <h2 id="form-title">New Product</h2>
+                <form id="product-form">
+                    <input type="hidden" id="f-sku" name="sku" />
+
+                    <div class="form-grid">
+                        <!-- LEFT -->
+                        <div class="col">
+                            <div class="row">
+                                <label>Product name</label>
+                                <input id="f-name" name="name" placeholder="Ex. Marshmallow Tee" required />
+                            </div>
+                            <div class="row">
+                                <label>Price (THB)</label>
+                                <input id="f-price" name="price" type="number" min="0" step="1" required />
+                            </div>
+                            <div class="row">
+                                <label>Status</label>
+                                <select id="f-status" name="status">
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <label>Tags <span class="hint">(comma: female, clothing, tshirt, new)</span></label>
+                                <input id="f-tags" name="tags" placeholder="female, clothing, tshirt, new" />
+                            </div>
+                            <div class="row">
+                                <label>Description</label>
+                                <textarea id="f-desc" name="desc" rows="4" placeholder="Short description"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT -->
+                        <div class="col">
+                            <div class="row">
+                                <label>Image path <span class="hint">(เริ่มด้วย img/... ไม่ต้อง ../)</span></label>
+                                <input id="f-img" name="img" placeholder="img/Shopimg/tt1.jpg" />
+                            </div>
+
+                            <div class="preview-card">
+                                <div class="preview-head">
+                                    <strong>Preview</strong>
+                                    <span class="hint">อัปเดตอัตโนมัติ</span>
+                                </div>
+                                <div class="preview-img-wrap">
+                                    <img id="img-preview" class="img-preview" alt="preview">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btns">
+                        <a class="btn btn-ghost" href="../admin/Product.html">Cancel</a>
+                        <div>
+                            <button type="button" class="btn btn-danger" id="btn-delete"
+                                style="display:none;">Delete</button>
+                            <button type="submit" class="btn btn-dark">Save</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ของจริง (ฐาน) -->
+    <script src="../js/products.js"></script>
+    <!-- logic new/edit/delete draft -->
+    <script src="../JS/Newprod.js"></script>
+
+    <script>
+        (function () {
+            const current = 'newprod.html';
+            document.querySelectorAll('.menu a.menu-item').forEach(a => {
+                const href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+                if (href === current) { a.classList.add('active'); a.setAttribute('aria-current', 'page'); }
+            });
+        })();
+    </script>
+</body>
+
+</html>

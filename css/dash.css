@@ -570,3 +570,9 @@ body {
 .kpi-trend.down .arrow{ border-top:8px solid #d36a2d; }    /* ลูกศรลง */
 
 .kpi-sub{ color:#8a8a8a; font-size:12px; }
+
+
+.table thead th.sortable { cursor: pointer; white-space: nowrap; }
+.table thead th.sortable.sort-asc::after  { content: " ▲"; font-size: 0.85em; }
+.table thead th.sortable.sort-desc::after { content: " ▼"; font-size: 0.85em; }
+

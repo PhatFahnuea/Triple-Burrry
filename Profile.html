@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Triple Burrry</title>
     <link rel="stylesheet" href="css/Profile.css">
 </head>
 
@@ -76,62 +76,80 @@
             <li><a href="./AboutUs.html">ABOUT US</a></li>
         </ul>
 
-    <div class="icons">
-      <div class="search-bar">
-        <input type="text" placeholder="Search..." />
-        <button type="submit">
-          <img src="https://img.icons8.com/?size=100&id=LnlEQU5pxlIU&format=png&color=000000" alt="Search Icon">
-        </button>
-      </div>
+        <div class="icons">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." />
+                <button type="submit">
+                    <img src="https://img.icons8.com/?size=100&id=LnlEQU5pxlIU&format=png&color=000000"
+                        alt="Search Icon">
+                </button>
+            </div>
 
-      <a href="./MyCart.html" class="icon-link">
-        <img src="https://img.icons8.com/?size=100&id=15893&format=png&color=000000" alt="Cart Icon">
-      </a>
+            <a href="./MyCart.html" class="icon-link">
+                <img src="https://img.icons8.com/?size=100&id=15893&format=png&color=000000" alt="Cart Icon">
+            </a>
 
-      <a href="./Profile.html" class="icon-link">
-        <img src="https://img.icons8.com/?size=100&id=15265&format=png&color=000000" alt="Profile Icon">
-      </a>
-    </div>
-  </nav>
-
-    <div class="account-container">
-        <h1>My Account</h1>
-
-        <div class="form-group1">
-            <img src="https://img.icons8.com/material-outlined/24/000000/user.png" alt="User Icon">
-            <label>User Name</label>
-            <input type="text" value="Mintcometoseemyfriend">
+            <a href="./Profile.html" class="icon-link">
+                <img src="https://img.icons8.com/?size=100&id=15265&format=png&color=000000" alt="Profile Icon">
+            </a>
         </div>
+    </nav>
 
-        <div class="form-group2">
-            <img src="https://img.icons8.com/material-outlined/24/000000/new-post.png" alt="Email Icon">
-            <label>Email</label>
-            <input type="email" value="Mintcometoseemyfriend@all.ac.th">
-        </div>
+    <main class="account-wrap">
+        <h1 class="acc-title">My Account</h1>
 
-        <div class="form-group1">
-            <img src="https://img.icons8.com/material-outlined/24/000000/phone.png" alt="Phone Icon">
-            <label>Phone Number</label>
-            <input type="text" value="0878135944">
-        </div>
+        <div class="acc-tiles">
+            <a class="acc-tile" href="./Membership.html">
+                <div class="tile-left">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Member</span>
+                </div>
+                <div class="tile-right">›</div>
+            </a>
 
-        <div class="form-group2">
-            <img src="https://img.icons8.com/material-outlined/24/000000/lock.png" alt="Password Icon">
-            <label>Password</label>
-            <input type="password" value="password">
+            <a class="acc-tile" href="./Setting.html">
+                <div class="tile-left">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M19.14 12.94a7.15 7.15 0 0 0 .05-.94 7.15 7.15 0 0 0-.05-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.22 7.22 0 0 0-1.63-.94l-.36-2.54a.5.5 0 0 0-.49-.42h-3.84a.5.5 0 0 0-.49.42l-.36 2.54c-.58.23-1.13.54-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.66 8.84a.5.5 0 0 0 .12.64l2.03 1.58c-.03.31-.05.63-.05.94s.02.63.05.94L2.78 14.5a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .6.22l2.39-.96c.5.4 1.05.71 1.63.94l.36 2.54a.5.5 0 0 0 .49.42h3.84a.5.5 0 0 0 .49-.42l.36-2.54c.58-.23 1.13-.54 1.63-.94l2.39.96a.5.5 0 0 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 15.5Z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Setting</span>
+                </div>
+                <div class="tile-right">›</div>
+            </a>
+
+            <div class="logout-icon-container">
+                <img src="https://img.icons8.com/?size=100&id=Q1xkcFuVON39&format=png&color=000000" alt="Logout Icon"
+                    onclick="logout()" title="Log Out">
+            </div>
         </div>
-        <div class="logout-icon-container">
-            <img src="https://img.icons8.com/?size=100&id=Q1xkcFuVON39&format=png&color=000000" alt="Logout Icon"
-                onclick="logout()" title="Log Out">
-        </div>
-    </div>
+    </main>
+
 
     <script>
         function logout() {
-            alert("คุณออกจากระบบแล้ว");
-            window.location.href = "../index.html";
+            if (!confirm('ยืนยันออกจากระบบ?')) return;
+
+            try {
+                localStorage.removeItem('cart');
+                localStorage.removeItem('user');
+                localStorage.removeItem('token');
+                sessionStorage.clear();
+            } catch (e) {
+                console.warn('Clear storage error:', e);
+            }
+
+            try { history.replaceState(null, '', location.href); } catch (_) { }
+
+            alert('คุณออกจากระบบแล้ว');
+            window.location.assign('index.html');
         }
     </script>
+
 </body>
 
 </html>

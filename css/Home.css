@@ -191,35 +191,73 @@ body {
 }
 
 .content {
-  gap: 10px;
-  padding: 10px 10px;
+    padding: 20px 16px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .Home-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
 }
 
 .Home-card {
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border-radius: 7px;
+    overflow: hidden;
+    background: #F4F1E8;
+    border: 1px solid #e6e0d6;
+    aspect-ratio: 4/5;
+    min-height: clamp(240px, 38vw, 520px);
 }
 
-.Home-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-}
-.center {
-  display: flex;
-  justify-content: center;
-  margin-left: 70px;
+.Home-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .3s ease, filter .3s ease;
 }
 
-.center img {
-  width: 70%;
-  height: 560px;
-  border-radius: 2px;
+.Home-card:hover img {
+    transform: scale(1.03);
+    filter: brightness(.98);
 }
+
+:root{
+  --cream:#f3f1eb;
+  --ink:#2b2b2b;
+  --line:#e6e3da;
+  --olive:#a4ad91;    /* ปุ่มโทนเขียวเทา */
+  --olive-ink:#5b624b;
+  --radius-xl:18px;
+}
+
+/* Strip */
+.mship-strip{
+  margin:28px auto; max-width:1100px;
+  background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-xl);
+}
+.mship-wrap{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:18px 20px;
+}
+.mship-kicker{font-size:.85rem; letter-spacing:.12em; color:#6b6b6b; text-transform:uppercase}
+.mship-title{margin:.1rem 0 .2rem 0; font-size:1.6rem; letter-spacing:.02em}
+.mship-sub{margin:0; color:#5e5e5e}
+
+/* Buttons */
+.btn{display:inline-block; padding:10px 16px; border-radius:999px; border:1px solid var(--ink); background:#fff}
+.btn-primary{background:var(--olive); border-color:var(--olive); color:#fff}
+.btn-primary:hover{filter:brightness(0.95)}
+.btn-ghost{background:transparent}
+.btn-ghost:hover{background:#fff}
+
+/* Mobile */
+@media (max-width:768px){
+  .mship-wrap{flex-direction:column; align-items:flex-start}
+  .mship-right{display:flex; gap:10px; width:100%}
+}
+
+

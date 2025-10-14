@@ -1,4 +1,3 @@
-// addcart.js
 const CART_KEY = 'cart';
 const $ = s => document.querySelector(s);
 

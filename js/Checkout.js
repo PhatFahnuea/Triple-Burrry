@@ -1,18 +1,16 @@
-// Checkout.js
 const CART_KEY = 'cart';
 const $ = s => document.querySelector(s);
 const moneyTHB = n => `฿${Number(n).toLocaleString('th-TH')}`;
 
 function loadCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); } catch { return []; } }
 
-// ----- STEP TOGGLER -----
+
 function showStep(name){
   $('#sec-delivery').hidden = name !== 'delivery';
   $('#sec-payment').hidden  = name !== 'payment';
   history.replaceState(null, '', `?step=${name}`);
 }
 
-// อ่าน step จาก URL (default: delivery)
 const step = new URLSearchParams(location.search).get('step') || 'delivery';
 showStep(step);
 
@@ -53,7 +51,6 @@ function renderSummary(){
 }
 renderSummary();
 
-// ----- Payment demo -----
 $('#card')?.addEventListener('input', e=>{
   let v = e.target.value.replace(/\D/g,'').slice(0,16);
   e.target.value = v.replace(/(\d{4})(?=\d)/g,'$1 ');

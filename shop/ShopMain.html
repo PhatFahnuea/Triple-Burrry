@@ -4,91 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shop</title>
-
-  <!-- css อยู่โฟลเดอร์นอก /shop/ -->
   <link rel="stylesheet" href="../css/Shop.css">
 </head>
 <body>
   <nav class="navbar">
-        <img src="../img/Homeimg/Loco_tripple.png" alt="Loco" />
-        <ul class="nav-links">
-            <li><a href="../Home.html">HOME</a></li>
-            <li class="dropdown">
-                <a href="./ShopMain.html" class="active">SHOP</a>
-                <ul class="dropdown-menu level-1">
-                    <li class="dropdown">
-                        <a href="#">Male</a>
-                        <ul class="dropdown-menu level-2">
-                            <li class="dropdown">
-                                <a href="#">Clothing</a>
-                                <ul class="dropdown-menu level-3">
-                                    <li><a href="../shop/Male/T-shirtMale.html">T-shirt</a></li>
-                                    <li><a href="../shop/Male/TankTopMale.html">Tank Top</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">Pants</a>
-                                <ul class="dropdown-menu level-3">
-                                    <li><a href="../shop/Male/JeansMale.html">Jeans</a></li>
-                                    <li><a href="../shop/Male/SkirtMale.html">Skirt</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">Accessories</a>
-                                <ul class="dropdown-menu level-3">
-                                    <li><a href="../shop/Male/BagMale.html">Bag</a></li>
-                                    <li><a href="../shop/Male/BraceletMale.html">Bracelet</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                    <li class="dropdown">
-                        <a href="#">Female</a>
-                        <ul class="dropdown-menu level-2">
-                            <li class="dropdown">
-                                <a href="#">Clothing</a>
-                                <ul class="dropdown-menu level-3">
-                                    <li><a href="../shop/Female/T-shirt.html">T-shirt</a></li>
-                                    <li><a href="../shop/Female/TankTop.html">Tank Top</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">Pants</a>
-                                <ul class="dropdown-menu level-3">
-                                    <li><a href="../shop/Female/Jeans.html">Jeans</a></li>
-                                    <li><a href="../shop/Female/Skirt.html">Skirt</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">Accessories</a>
-                                <ul class="dropdown-menu level-3">
-                                    <li><a href="../shop/Female/Bag.html">Bag</a></li>
-                                    <li><a href="../shop/Female/Bracelet.html">Bracelet</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+    <img src="../img/Homeimg/Loco_tripple.png" alt="Loco" />
+    <ul class="nav-links">
+      <li><a href="../Home.html">HOME</a></li>
+      <li class="dropdown">
+        <a href="./ShopMain.html" class="active">SHOP</a>
+        <ul class="dropdown-menu level-1">
+          <li class="dropdown">
+            <a href="#">Male</a>
+            <ul class="dropdown-menu level-2">
+              <li class="dropdown">
+                <a href="#">Clothing</a>
+                <ul class="dropdown-menu level-3">
+                  <li><a href="./ShopMain.html?gender=male&category=clothing&type=tshirt">T-shirt</a></li>
+                  <li><a href="./ShopMain.html?gender=male&category=clothing&type=tanktop">Tank Top</a></li>
                 </ul>
-            </li>
+              </li>
+              <li class="dropdown">
+                <a href="#">Pants</a>
+                <ul class="dropdown-menu level-3">
+                  <li><a href="./ShopMain.html?gender=male&category=pants&type=jeans">Jeans</a></li>
+                  <li><a href="./ShopMain.html?gender=male&category=pants&type=skirt">Skirt</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#">Accessories</a>
+                <ul class="dropdown-menu level-3">
+                  <li><a href="./ShopMain.html?gender=male&category=accessories&type=bag">Bag</a></li>
+                  <li><a href="./ShopMain.html?gender=male&category=accessories&type=bracelet">Bracelet</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
 
-            <li><a href="../Collection.html">COLLECTION</a></li>
-            <li><a href="../AboutUs.html">ABOUT US</a></li>
+          <li class="dropdown">
+            <a href="#">Female</a>
+            <ul class="dropdown-menu level-2">
+              <li class="dropdown">
+                <a href="#">Clothing</a>
+                <ul class="dropdown-menu level-3">
+                  <li><a href="./ShopMain.html?gender=female&category=clothing&type=tshirt">T-shirt</a></li>
+                  <li><a href="./ShopMain.html?gender=female&category=clothing&type=tanktop">Tank Top</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#">Pants</a>
+                <ul class="dropdown-menu level-3">
+                  <li><a href="./ShopMain.html?gender=female&category=pants&type=jeans">Jeans</a></li>
+                  <li><a href="./ShopMain.html?gender=female&category=pants&type=skirt">Skirt</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#">Accessories</a>
+                <ul class="dropdown-menu level-3">
+                  <li><a href="./ShopMain.html?gender=female&category=accessories&type=bag">Bag</a></li>
+                  <li><a href="./ShopMain.html?gender=female&category=accessories&type=bracelet">Bracelet</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ul>
+      </li>
+
+      <li><a href="../Collection.html">COLLECTION</a></li>
+      <li><a href="../AboutUs.html">ABOUT US</a></li>
+    </ul>
 
     <div class="icons">
       <div class="search-bar">
         <input type="text" placeholder="Search..." />
-        <button type="submit">
+        <button type="submit" aria-label="Search">
           <img src="https://img.icons8.com/?size=100&id=LnlEQU5pxlIU&format=png&color=000000" alt="Search Icon">
         </button>
       </div>
-
-      <a href="../MyCart.html" class="icon-link">
+      <a href="../MyCart.html" class="icon-link" aria-label="Cart">
         <img src="https://img.icons8.com/?size=100&id=15893&format=png&color=000000" alt="Cart Icon">
       </a>
-
-      <a href="../Profile.html" class="icon-link">
+      <a href="../Profile.html" class="icon-link" aria-label="Profile">
         <img src="https://img.icons8.com/?size=100&id=15265&format=png&color=000000" alt="Profile Icon">
       </a>
     </div>
@@ -97,21 +93,12 @@
   <section class="shop-section">
     <div class="shop-header">
       <h2>All</h2>
-      <p>120 Products</p>
+      <p>0 Products</p>
     </div>
 
-    <div class="product-grid">
-      <!-- จะถูกแทนที่โดย Shop.js -->
-      <div class="product-card">
-        <img src="img/placeholder-square.png" alt="placeholder">
-        <h3>Loading…</h3>
-        <p class="brand">Triple Burry</p>
-        <p class="price">0.00</p>
-      </div>
-    </div>
+    <div class="product-grid"></div>
   </section>
 
-  <!-- products.js ต้องประกาศ window.PRODUCTS (img ให้เป็นพาธสัมพัทธ์จาก /shop/) -->
   <script src="../js/products.js"></script>
   <script src="../js/Shop.js"></script>
 </body>

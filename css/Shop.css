@@ -240,3 +240,32 @@ body {
   font-size: 1rem;
   color: #333;
 }
+
+.product-card .btn-quick {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #8c9871;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 14px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.06);
+  transition: background .12s ease, transform .02s ease, opacity .12s ease;
+}
+
+
+.product-card .btn-quick:not([aria-disabled="true"]):hover {
+  background: #7a8764;
+}
+.product-card .btn-quick:not([aria-disabled="true"]):active {
+  transform: translateY(1px);
+}
+
+.product-card .btn-quick[aria-disabled="true"] {
+  pointer-events: none;      
+  cursor: not-allowed;
+  opacity: 1;                
+  background: #8c9871;       
+}

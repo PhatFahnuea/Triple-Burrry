@@ -1,18 +1,14 @@
-// myCart.js
-/* ===== Utilities ===== */
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const CART_KEY = 'cart';
 const moneyTHB = n => `฿${Number(n).toLocaleString('th-TH', { minimumFractionDigits: 0 })}`;
 
-/* ===== Load / Save ===== */
 function loadCart() {
   try { return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }
   catch { return []; }
 }
 function saveCart(items) { localStorage.setItem(CART_KEY, JSON.stringify(items)); }
 
-/* ===== Fix image path (วิธี 2) ===== */
 const normImg = (s) => {
   const x = (s || '').trim();
   if (!x) return 'img/placeholder-square.png';
@@ -22,7 +18,6 @@ const normImg = (s) => {
   return clean || 'img/placeholder-square.png';
 };
 
-/* ===== Render ===== */
 const listEl = $('#cart-items');
 const subEl  = $('#sum-subtotal');
 const totEl  = $('#sum-total');
@@ -71,11 +66,10 @@ function render() {
         </div>
       </div>
     `;
-    // ✅ สำคัญ: เพิ่ม row เข้า DOM
+  
     listEl.appendChild(row);
-  }); // ✅ ปิด forEach ให้เรียบร้อย
+  });
 
-  // ✅ อัปเดตราคารวมหลังวนครบ
   subEl.textContent = moneyTHB(subtotal);
   totEl.textContent = moneyTHB(subtotal);
 }
@@ -110,14 +104,12 @@ listEl.addEventListener('click', (e) => {
   }
 });
 
-/* ===== Checkout navigation (เลือกเริ่มที่ Delivery) ===== */
+
 $('#btn-checkout')?.addEventListener('click', () => {
   const cart = loadCart();
   if (!cart.length) return alert('ตะกร้าว่างอยู่');
   location.href = './Shop/Checkout.html?step=delivery';
-  // หรือเริ่มที่ Payment:
-  // location.href = './Shop/Checkout.html?step=payment';
 });
 
-/* ===== First paint ===== */
+
 render();

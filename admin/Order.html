@@ -1,46 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Triple Burrry</title>
   <link rel="stylesheet" href="../css/dash.css" />
 </head>
 
 <body>
+  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="brand">
       <span class="brand-title">TRIPLE BURRRY ADMIN</span>
     </div>
     <nav class="menu">
-      <a class="menu-item" href="../admin/Dashboard.html">
-        <span class="mi-dot"></span> Dashboard
-      </a>
-      <a class="menu-item" href="../admin/Product.html">
-        <span class="mi-box"></span> Products
-      </a>
-      <a class="menu-item" href="../admin/Order.html">
-        <span class="mi-clipboard"></span> Orders
-      </a>
-      <a class="menu-item" href="../admin/User.html">
-        <span class="mi-user"></span> Users
-      </a>
+      <a class="menu-item" href="./Dashboard.html"><span class="mi-dot"></span> Dashboard</a>
+      <a class="menu-item" href="./Product.html"><span class="mi-box"></span> Products</a>
+      <a class="menu-item" href="./Order.html"><span class="mi-clipboard"></span> Orders</a>
+      <a class="menu-item" href="./User.html"><span class="mi-user"></span> Users</a>
       <div class="menu-sep"></div>
-      <a class="menu-item danger" href="../auth/signin.html">
-        <span class="mi-logout"></span> Log out
-      </a>
+      <a class="menu-item danger" href="../auth/signin.html"><span class="mi-logout"></span> Log out</a>
     </nav>
   </aside>
 
-  <main class="content">
+  <!-- Main -->
+  <main class="main">
+    <!-- Topbar -->
     <header class="topbar">
       <form class="search" onsubmit="return false;">
         <span class="search-icon">🔍</span>
-        <input type="search" placeholder="Search" aria-label="Search" />
+        <input type="search" placeholder="Search users" aria-label="Search users"/>
       </form>
-
       <div class="topbar-right">
-        <button class="icon-btn" aria-label="Notifications">🔔</button>
         <div class="profile">
           <img src="../img/etc/cutie.png" alt="Profile" />
           <div class="profile-meta">
@@ -50,6 +42,8 @@
         </div>
       </div>
     </header>
+
+    <!-- Card: Recent Purchases -->
     <section class="card">
       <header class="card-head between">
         <h3>Recent Purchases</h3>
@@ -63,12 +57,12 @@
               <th style="width:40px;">
                 <input id="select-all" type="checkbox" aria-label="select all">
               </th>
-              <th>Product</th>
-              <th>Order ID</th>
-              <th>Date</th>
-              <th>Customer Name</th>
-              <th>Status</th>
-              <th class="text-right">Amount</th>
+              <th class="sortable" data-key="product" aria-sort="none">Product</th>
+              <th class="sortable" data-key="orderId" aria-sort="none">Order ID</th>
+              <th class="sortable" data-key="date" aria-sort="descending">Date</th>
+              <th class="sortable" data-key="customer" aria-sort="none">Customer Name</th>
+              <th class="sortable" data-key="status" aria-sort="none">Status</th>
+              <th class="sortable text-right" data-key="amount" aria-sort="none">Amount</th>
             </tr>
           </thead>
           <tbody><!-- filled by JS --></tbody>
@@ -77,8 +71,10 @@
     </section>
   </main>
 
+  <!-- ===== Scripts ===== -->
+
+  <!-- ทำเมนู sidebar ให้ active อัตโนมัติ -->
   <script>
-    // ========== 1) เมนูแอคทีฟตามไฟล์ปัจจุบัน ==========
     (function () {
       const current = location.pathname.split('/').pop().toLowerCase() || 'dashboard.html';
       document.querySelectorAll('.menu a.menu-item').forEach(a => {
@@ -92,8 +88,10 @@
         }
       });
     })();
+  </script>
 
-    // ========== 2) Mock data ==========
+  <script>
+    // ========== Mock data ==========
     const MOCK_ORDERS = [
       { product: "Handmade Linen Tote",           orderId: "TB-001248", date: "2025-10-09T16:25:00+07:00", customer: "Sasiwan K.",   status: "Completed",  amount: 1290 },
       { product: "Vintage Denim Jacket (M)",      orderId: "TB-001247", date: "2025-10-09T15:40:00+07:00", customer: "Jirawat P.",  status: "Processing", amount: 890 },
@@ -109,7 +107,7 @@
       { product: "Wool Beret (2nd-hand)",         orderId: "TB-001237", date: "2025-10-06T11:22:00+07:00", customer: "Chayanit T.", status: "Cancelled",  amount: 0 }
     ];
 
-    // Helpers
+    // ========== Helpers ==========
     const statusClass = (s) => ({
       "Completed":  "success",
       "Pending":    "warning",
@@ -126,12 +124,11 @@
         hour: "2-digit", minute: "2-digit"
       });
 
-    // ========== 3) เติมข้อมูลลงตาราง ==========
+    // ========== Render (no internal sort) ==========
     function renderOrders(rows) {
       const tbody = document.querySelector("#users-table tbody");
       if (!tbody) return;
-
-      const data = [...rows].sort((a,b) => new Date(b.date) - new Date(a.date));
+      const data = rows; // ไม่ sort ซ้ำ
       tbody.innerHTML = data.map(row => `
         <tr>
           <td><input type="checkbox" aria-label="select row"></td>
@@ -145,7 +142,7 @@
       `).join("");
     }
 
-    // ========== 4) พฤติกรรม Select-all ==========
+    // ========== Select-all ==========
     function initSelectAll() {
       const table = document.getElementById('users-table');
       const selectAll = document.getElementById('select-all');
@@ -153,13 +150,11 @@
 
       const rowChecks = () => table.querySelectorAll('tbody input[type="checkbox"]');
 
-      // toggle ทั้งหมด
       selectAll.addEventListener('change', () => {
         rowChecks().forEach(chk => chk.checked = selectAll.checked);
         selectAll.indeterminate = false;
       });
 
-      // sync สถานะ select-all ตามแถว
       table.addEventListener('change', (e) => {
         if (!e.target.matches('tbody input[type="checkbox"]')) return;
         const checks = Array.from(rowChecks());
@@ -170,10 +165,79 @@
       });
     }
 
-    // Boot
-    renderOrders(MOCK_ORDERS);
-    initSelectAll();
-  </script>
+    // ========== Sorting ==========
+    let SORT = { key: 'date', dir: 'desc' };              // เริ่มต้นเรียงตามวันที่ใหม่→เก่า
+    const CURRENT_ROWS = [...MOCK_ORDERS];                // แหล่งข้อมูลปัจจุบัน
 
+    function normalizeForSort(row, key) {
+      switch (key) {
+        case 'amount':  return Number(row.amount) || 0;
+        case 'date':    return new Date(row.date).getTime();
+        case 'orderId': return parseInt(String(row.orderId).replace(/\D/g, ''), 10) || 0; // TB-001248 -> 1248
+        case 'status': {
+          const order = { Completed: 4, Processing: 3, Pending: 2, Cancelled: 1 };
+          return order[row.status] || 0;
+        }
+        default:        return String(row[key] || '').toLowerCase();
+      }
+    }
+
+    function sortRows(rows, key, dir) {
+      const sign = dir === 'asc' ? 1 : -1;
+      return [...rows].sort((a, b) => {
+        const va = normalizeForSort(a, key);
+        const vb = normalizeForSort(b, key);
+        if (va < vb) return -1 * sign;
+        if (va > vb) return  1 * sign;
+        return 0;
+      });
+    }
+
+    function rerender() {
+      const sorted = sortRows(CURRENT_ROWS, SORT.key, SORT.dir);
+      renderOrders(sorted);
+    }
+
+    function initSortableHeaders() {
+      const headers = document.querySelectorAll('#users-table thead th.sortable');
+      headers.forEach(th => {
+        th.tabIndex = 0;
+        th.addEventListener('click', () => handleSortClick(th));
+        th.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleSortClick(th);
+          }
+        });
+      });
+    }
+
+    function handleSortClick(th) {
+      const key = th.dataset.key;
+      if (!key) return;
+
+      if (SORT.key === key) {
+        SORT.dir = SORT.dir === 'asc' ? 'desc' : 'asc';
+      } else {
+        SORT.key = key;
+        SORT.dir = (key === 'date' || key === 'orderId' || key === 'amount') ? 'desc' : 'asc';
+      }
+
+      // อัปเดต aria-sort + ลูกศร
+      document.querySelectorAll('#users-table thead th.sortable').forEach(h => {
+        h.setAttribute('aria-sort', 'none');
+        h.classList.remove('sort-asc', 'sort-desc');
+      });
+      th.setAttribute('aria-sort', SORT.dir === 'asc' ? 'ascending' : 'descending');
+      th.classList.add(SORT.dir === 'asc' ? 'sort-asc' : 'sort-desc');
+
+      rerender();
+    }
+
+    // ===== Boot =====
+    rerender();          // แรกเข้าเรียงตาม date desc
+    initSelectAll();     // ตั้งค่า select-all
+    initSortableHeaders();
+  </script>
 </body>
 </html>

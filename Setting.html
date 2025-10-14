@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triple Burrry</title>
+    <link rel="stylesheet" href="css/Profile.css">
+    <style>
+        :root {
+            --paper: #f7f6f2;
+            --panel: #fbfaf7;
+            --line: #e6e3da;
+            --ink: #2b2b2b;
+            --accent: #aeb6a2;
+            --radius: 18px;
+        }
+
+        .wrap {
+            max-width: 1250px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .intro {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 14px
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .03)
+        }
+
+        .section-title {
+            margin: .2rem 0 10px;
+            font-size: 1.05rem;
+            letter-spacing: .3px
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        label {
+            display: block;
+            margin: .3rem 0 .35rem
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            background: #fff;
+            transition: border-color .2s, box-shadow .2s
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(174, 182, 162, .25)
+        }
+
+        .hint {
+            color: #666;
+            font-size: .9rem
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px
+        }
+
+        .avatar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            background: #faf9f5;
+            border: 1px dashed #d8d5c9;
+            border-radius: 14px
+        }
+
+        .avatar img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #e5e2d6
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid var(--ink);
+            background: #fff;
+            color: var(--ink);
+            text-decoration: none;
+            cursor: pointer
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff
+        }
+
+        .btn.ghost {
+            background: transparent
+        }
+
+        .btn:disabled {
+            opacity: .55;
+            cursor: not-allowed
+        }
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            background: #1f1f1f;
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s, transform .25s
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-4px)
+        }
+
+        @media (max-width:900px) {
+            .row {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="img/Homeimg/Loco_tripple.png" alt="Loco">
+        <ul class="nav-links">
+            <li><a href="./Home.html">HOME</a></li>
+            <li class="dropdown">
+                <a href="./Shop/ShopMain.html">SHOP</a>
+                <ul class="dropdown-menu level-1">
+                    <li class="dropdown">
+                        <a href="#">Male</a>
+                        <ul class="dropdown-menu level-2">
+                            <li class="dropdown">
+                                <a href="#">Clothing</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="./Shop/Male/T-shirtMale.html">T-shirt</a></li>
+                                    <li><a href="./Shop/Male/TankTopMale.html">Tank Top</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Pants</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="./Shop/Male/JeansMale.html">Jeans</a></li>
+                                    <li><a href="./Shop/Male/SkirtMale.html">Skirt</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Accessories</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="./Shop/Male/BagMale.html">Bag</a></li>
+                                    <li><a href="./Shop/Male/BraceletMale.html">Bracelet</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#">Female</a>
+                        <ul class="dropdown-menu level-2">
+                            <li class="dropdown">
+                                <a href="#">Clothing</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="./Shop/Female/T-shirt.html">T-shirt</a></li>
+                                    <li><a href="./Shop/Female/TankTop.html">Tank Top</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Pants</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="./Shop/Female/Jeans.html">Jeans</a></li>
+                                    <li><a href="./Shop/Female/Skirt.html">Skirt</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Accessories</a>
+                                <ul class="dropdown-menu level-3">
+                                    <li><a href="./Shop/Female/Bag.html">Bag</a></li>
+                                    <li><a href="./Shop/Female/Bracelet.html">Bracelet</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="./Collection.html">COLLECTION</a></li>
+            <li><a href="./AboutUs.html">ABOUT US</a></li>
+        </ul>
+
+        <div class="icons">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." />
+                <button type="submit">
+                    <img src="https://img.icons8.com/?size=100&id=LnlEQU5pxlIU&format=png&color=000000"
+                        alt="Search Icon">
+                </button>
+            </div>
+            <a href="./MyCart.html" class="icon-link">
+                <img src="https://img.icons8.com/?size=100&id=15893&format=png&color=000000" alt="Cart Icon">
+            </a>
+            <a href="./Profile.html" class="icon-link">
+                <img src="https://img.icons8.com/?size=100&id=15265&format=png&color=000000" alt="Profile Icon">
+            </a>
+        </div>
+    </nav>
+
+    <div class="wrap">
+        <div class="intro">
+            <p class="hint">จัดการข้อมูลส่วนตัวของคุณ ข้อมูลนี้ใช้สำหรับคูปองและบริการลูกค้า</p>
+        </div>
+
+        <section class="layout">
+            <form id="profileForm" class="card" autocomplete="on">
+                <h3 class="section-title">โปรไฟล์</h3>
+
+                <div class="avatar">
+                    <img id="avatarPreview" src="img/Homeimg/Loco_tripple.png" alt="avatar">
+                    <div>
+                        <div class="hint">Profile Picture</div>
+                        <input id="avatarInput" type="file" accept="image/*" hidden>
+                        <button type="button" class="btn btn-mini"
+                            onclick="document.getElementById('avatarInput').click()">อัปโหลดรูป</button>
+                        <button type="button" class="btn btn-mini ghost" id="removeAvatar">เอารูปออก</button>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:10px">
+                    <div>
+                        <label>ชื่อ-นามสกุล</label>
+                        <input name="fullName" placeholder="Your name" required autocomplete="name">
+                    </div>
+                    <div>
+                        <label>อีเมล</label>
+                        <input name="email" type="email" placeholder="you@email.com" required autocomplete="email">
+                    </div>
+                    <div>
+                        <label>เบอร์โทร</label>
+                        <input name="phone" inputmode="tel" placeholder="08xxxxxxxx" autocomplete="tel">
+                    </div>
+                    <div>
+                        <label>วันเกิด</label>
+                        <input name="birthday" type="date" autocomplete="bday">
+                    </div>
+                </div>
+
+                <label>ความสนใจหลัก</label>
+                <select name="interest">
+                    <option value="tee">Vintage Tee</option>
+                    <option value="denim">Denim</option>
+                    <option value="workwear">Workwear</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+
+                <label>เกี่ยวกับฉัน <span class="hint">(เช่น สไตล์/ทรงที่ชอบ)</span></label>
+                <textarea name="bio" rows="3" placeholder="เล่าเกี่ยวกับความชอบของคุณ"></textarea>
+
+                <div class="actions">
+                    <button class="btn primary" type="submit" id="saveBtn">บันทึก</button>
+                </div>
+
+                <p id="saveMsg" class="hint" style="margin-top:8px"></p>
+            </form>
+        </section>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">บันทึกแล้ว ✔</div>
+
+    <script>
+        const MOCK_STORAGE_KEY = 'mock_me';
+        const AVATAR_KEY = 'mock_avatar';
+
+        const DEFAULT_MOCK = {
+            id: 2,
+            email: 'user@shop.com',
+            password: 'user123', 
+            role: 'user',
+            name: 'Triple User',
+            status: 'Active',
+            fullName: 'Triple User',
+            phone: '',
+            birthday: '',
+            interest: 'tee',
+            bio: '',
+            avatarUrl: ''         
+        };
+
+        (function ensureMock() {
+            if (!localStorage.getItem(MOCK_STORAGE_KEY)) {
+                localStorage.setItem(MOCK_STORAGE_KEY, JSON.stringify(DEFAULT_MOCK));
+            }
+        })();
+
+        async function api(path, options = {}) {
+            await new Promise(r => setTimeout(r, 200));
+
+            if (path === '/api/me' && (!options.method || options.method === 'GET')) {
+                const me = JSON.parse(localStorage.getItem(MOCK_STORAGE_KEY));
+                const avatar = localStorage.getItem(AVATAR_KEY);
+                return { ...me, avatarUrl: avatar || me.avatarUrl || '' };
+            }
+
+            if (path === '/api/me' && options.method === 'PUT') {
+                const body = JSON.parse(options.body || '{}');
+                const current = JSON.parse(localStorage.getItem(MOCK_STORAGE_KEY));
+                const next = {
+                    ...current,
+                    fullName: body.fullName ?? current.fullName,
+                    email: body.email ?? current.email,
+                    phone: body.phone ?? current.phone,
+                    birthday: body.birthday ?? current.birthday,
+                    interest: body.interest ?? current.interest,
+                    bio: body.bio ?? current.bio
+                };
+                localStorage.setItem(MOCK_STORAGE_KEY, JSON.stringify(next));
+                return next;
+            }
+
+            if (path === '/api/me/avatar' && options.method === 'PUT') {
+                const fd = options.body;
+                const file = fd.get('file');
+                if (!file) return { avatarUrl: '' };
+
+                const dataUrl = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+
+                localStorage.setItem(AVATAR_KEY, dataUrl);
+                return { avatarUrl: dataUrl };
+            }
+
+            return null;
+        }
+
+        const UI = {
+            form: document.getElementById('profileForm'),
+            toast: document.getElementById('toast'),
+            saveMsg: document.getElementById('saveMsg'),
+            saveBtn: document.getElementById('saveBtn'),
+            avatarInput: document.getElementById('avatarInput'),
+            avatarPreview: document.getElementById('avatarPreview'),
+            removeAvatar: document.getElementById('removeAvatar'),
+        };
+
+        function toast(msg) {
+            UI.toast.textContent = msg || 'บันทึกแล้ว ✔';
+            UI.toast.classList.add('show');
+            setTimeout(() => UI.toast.classList.remove('show'), 1600);
+        }
+
+        async function loadProfile() {
+            try {
+                UI.saveBtn.disabled = true;
+                const me = await api('/api/me');
+                UI.form.fullName.value = me.fullName || me.name || '';
+                UI.form.email.value = me.email || '';
+                UI.form.phone.value = me.phone || '';
+                UI.form.birthday.value = me.birthday || '';
+                UI.form.interest.value = me.interest || 'tee';
+                UI.form.bio.value = me.bio || '';
+                if (me.avatarUrl) UI.avatarPreview.src = me.avatarUrl;
+            } catch (err) {
+                console.error(err);
+                UI.saveMsg.textContent = 'โหลดข้อมูลไม่สำเร็จ';
+            } finally {
+                UI.saveBtn.disabled = false;
+            }
+        }
+
+        async function saveProfile(e) {
+            e.preventDefault();
+            const body = {
+                fullName: UI.form.fullName.value.trim(),
+                email: UI.form.email.value.trim(),
+                phone: UI.form.phone.value.trim(),
+                birthday: UI.form.birthday.value,
+                interest: UI.form.interest.value,
+                bio: UI.form.bio.value.trim(),
+            };
+            try {
+                UI.saveBtn.disabled = true;
+                await api('/api/me', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body),
+                });
+                UI.saveMsg.textContent = 'บันทึกแล้ว ✔';
+                toast('บันทึกแล้ว ✔');
+            } catch (err) {
+                console.error(err);
+                UI.saveMsg.textContent = 'บันทึกไม่สำเร็จ';
+                toast('บันทึกไม่สำเร็จ');
+            } finally {
+                UI.saveBtn.disabled = false;
+            }
+        }
+
+        async function uploadAvatar(file) {
+            const fd = new FormData();
+            fd.append('file', file);
+            try {
+                const data = await api('/api/me/avatar', { method: 'PUT', body: fd });
+                if (data?.avatarUrl) {
+                    UI.avatarPreview.src = data.avatarUrl;
+                    toast('อัปเดตอวาตาร์แล้ว ✔');
+                }
+            } catch (err) {
+                console.error(err);
+                toast('อัปโหลดรูปไม่สำเร็จ');
+            }
+        }
+
+        function removeAvatarPreview() {
+            localStorage.removeItem(AVATAR_KEY);
+            UI.avatarPreview.src = 'img/Homeimg/Loco_tripple.png';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProfile);
+        UI.form.addEventListener('submit', saveProfile);
+        UI.avatarInput.addEventListener('change', (e) => e.target.files[0] && uploadAvatar(e.target.files[0]));
+        UI.removeAvatar.addEventListener('click', removeAvatarPreview);
+    </script>
+</body>
+
+</html>

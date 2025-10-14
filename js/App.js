@@ -1,9 +1,7 @@
-// ========== Utils ==========
 const formatTHB = (n) => new Intl.NumberFormat("th-TH",{style:"currency",currency:"THB"}).format(n);
 const daysBetween = (d1,d2)=>Math.floor(Math.abs(new Date(d2)-new Date(d1))/(1000*60*60*24));
 const todayISO = new Date().toISOString().slice(0,10);
 
-// ========== MOCK LISTINGS (one-of-a-kind) ==========
 const LISTINGS = [
   // status: 'listed' | 'reserved' | 'sold'
   { sku:'TB-L-001', name:'Vintage Denim Jacket (M)',  price: 890, listed_at:'2025-09-20', sold_at:'2025-10-08', status:'sold' },
@@ -29,7 +27,6 @@ function getKPIs(listings){
   return { live, reserved, sold7d, avgDaysToSell };
 }
 
-// ========== Render KPI cards (One-of-a-kind focus) ==========
 (function renderKpiCards(){
   const root = document.getElementById('cards-root');
   if(!root) return;
@@ -59,7 +56,6 @@ function getKPIs(listings){
   `).join('');
 })();
 
-// ========== Aged Items (>14d) ==========
 function renderAgedItems(listings, thresholdDays=14, limit=5){
   const el = document.getElementById('aged-list'); if(!el) return;
 
@@ -82,7 +78,6 @@ function renderAgedItems(listings, thresholdDays=14, limit=5){
   `).join('') || `<li class="muted">No aged items 🎉</li>`;
 }
 
-// ========== Newly Listed (<=7d) ==========
 function renderNewlyListed(listings, windowDays=7, limit=5){
   const el = document.getElementById('newly-list'); if(!el) return;
 
@@ -103,6 +98,5 @@ function renderNewlyListed(listings, windowDays=7, limit=5){
   `).join('') || `<li class="muted">No new listings</li>`;
 }
 
-// ========== Boot ==========
 renderAgedItems(LISTINGS);
 renderNewlyListed(LISTINGS);
