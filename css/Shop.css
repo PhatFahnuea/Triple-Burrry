@@ -202,12 +202,13 @@ body {
 }
 
 .product-card {
-  background-color: #D6D7CF;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+    border-radius: 7px;
+    overflow: hidden;
+    background: #F4F1E8;
+    border: 1px solid #e6e0d6;
+    aspect-ratio: 4/5;
+    min-height: clamp(240px, 38vw, 520px);
 }
 
 .product-card:hover {

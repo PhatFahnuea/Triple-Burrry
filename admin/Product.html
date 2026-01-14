@@ -39,38 +39,87 @@
         <a class="btn btn-dark" href="../admin/Newprod.html">⊕ Add New Product</a>
       </header>
 
-      <div class="table-card">
-        <div class="table-wrap">
-          <table class="table" id="products-table">
-            <thead>
-              <tr>
-                <th style="width:140px;">Image</th>
-                <th>Product Name</th>
-                <th style="width:120px;" class="text-right">Price</th>
-                <th style="width:120px;">Status</th>
-                <th style="width:120px;">Action</th>
-              </tr>
-            </thead>
-            <tbody><!-- by JS --></tbody>
-          </table>
+      <div class="table-wrap">
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="../img/etc/Female/Bag/BF2.jpg" alt="Product Image">
+            <h3>Watch</h3>
+            <div class="price">Price 990 baht</div>
+            <div class="Status">status <a href="#">Active</a></div>
+            <div class="Edit">action <a href="#">Edit</a></div>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="../img/etc/Female/Bag/BF3.jpg" alt="Product Image">
+            <h3>Bag</h3>
+            <div class="price">Price 990 baht</div>
+            <div class="Status">status <a href="#">Active</a></div>
+            <div class="Edit">action <a href="#">Edit</a></div>
+        </div>
+    </div>
+
+        <div class="product-grid">
+        <div class="product-card">
+            <img src="../img/etc/Female/Bag/BF5.jpg" alt="Product Image">
+            <h3>Watch</h3>
+            <div class="price">Price 990 baht</div>
+            <div class="Status">status <a href="#">Active</a></div>
+            <div class="Edit">action <a href="#">Edit</a></div>
         </div>
       </div>
+
+      <div class="product-grid">
+        <div class="product-card">
+            <img src="../img/etc/Female/Bag/BF6.jpg" alt="Product Image">
+            <h3>Watch</h3>
+            <div class="price">Price 990 baht</div>
+            <div class="Status">status <a href="#">Active</a></div>
+            <div class="Edit">action <a href="#">Edit</a></div>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="../img/etc/Female/Bracelets/BaF1.jpg" alt="Product Image">
+            <h3>Bracelet</h3>
+            <div class="price">Price 990 baht</div>
+            <div class="Status">status <a href="#">Active</a></div>
+            <div class="Edit">action <a href="#">Edit</a></div>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="../img/etc/Female/Bracelets/BaF2.jpg" alt="Product Image">
+            <h3>Bracelet</h3>
+            <div class="price">Price 990 baht</div>
+            <div class="Status">status <a href="#">Active</a></div>
+            <div class="Edit">action <a href="#">Edit</a></div>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="../img/etc/Female/Bracelets/BaF3.jpg" alt="Product Image">
+            <h3>Bracelet</h3>
+            <div class="price">Price 990 baht</div>
+            <div class="Status">status <a href="#">Active</a></div>
+            <div class="Edit">action <a href="#">Edit</a></div>
+        </div>
+    </div>
+
+    
+    </div>
+
+    <script src="../js/products.js"></script>
+      
+
+      
     </section>
   </main>
 
-  <!-- ต้องโหลด products.js ก่อน เพื่อให้มีสินค้าจริง -->
-  <script src="../js/products.js"></script>
-  <!-- สคริปต์ตาราง + ลิงก์ไปหน้า New/Edit -->
-  <script src="../JS/adminProducts.js"></script>
-
-  <script>
-    (function () {
-      const current = 'product.html';
-      document.querySelectorAll('.menu a.menu-item').forEach(a => {
-        const href = (a.getAttribute('href')||'').split('/').pop().toLowerCase();
-        if (href === current) { a.classList.add('active'); a.setAttribute('aria-current','page'); }
-      });
-    })();
-  </script>
 </body>
 </html>

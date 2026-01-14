@@ -14,23 +14,19 @@ body {
   color: #1f1f1f;
   background: #f5f4f1;
 
-  /* Layout หลัก: ซ้าย Sidebar (240px) | ขวา Main */
   display: grid;
   grid-template-columns: 240px 1fr;
   min-height: 100vh;
 }
 
-/* -------- Sidebar -------- */
 .sidebar {
   background: #ffffff;
   border-right: 1px solid #d8d6cf;
   padding: 20px 16px;
 
-  position: sticky;
-  top: 0;
-  align-self: start;
-  height: 100vh;
-  overflow: auto;
+  position: relative;
+  align-self: stretch; 
+  height: auto;
 }
 
 .brand {
@@ -189,7 +185,6 @@ body {
   color: #6b6b6b;
 }
 
-/* -------- Board -------- */
 .board {
   background: #f2f1ed;
   border-radius: 14px;
@@ -199,7 +194,6 @@ body {
   row-gap: 20px;
 }
 
-/* -------- Cards -------- */
 .cards {
   display: grid;
   grid-template-columns: repeat(4, minmax(220px, 1fr));
@@ -271,12 +265,9 @@ body {
   color: #3c8a5b;
 }
 
-/* เขียว */
 .stat-diff.down {
   color: #d18d35;
 }
-
-/* ส้ม/แดง */
 
 .between {
   display: grid;
@@ -293,47 +284,57 @@ body {
   font-weight: 700;
 }
 
-/* -------- Content Grid -------- */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 16px;
+.product-grid {
+  display: inline;
 }
 
-/* -------- Table (ถ้าใช้ในหน้าอื่น) -------- */
-.table-wrap {
-  overflow: auto;
-  border: 1px solid #d8d6cf;
-  border-radius: 12px;
-  background: #e8e7e2;
-}
-
-.table {
+.product-card {
+  background-color: #D6D7CF;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
 }
 
-.table thead th {
-  background: #dcdad4;
-  border-bottom: 1px solid #d3d1ca;
-  text-align: left;
-  padding: 13px 14px;
-  font-size: 14px;
-  color: #4a4a4a;
-  position: sticky;
-  top: 0;
-  z-index: 1;
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
-.table tbody td {
-  padding: 14px;
-  border-bottom: 1px solid #d3d1ca;
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
-.table tbody tr:hover {
-  background: #ecebe7;
+.product-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
 }
+
+.product-card .brand {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.product-card .price {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
+.table-wrap {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
 
 /* -------- Badges -------- */
 .badge {
@@ -367,7 +368,6 @@ body {
   color: #7a1f1f;
 }
 
-/* -------- Lists (Aged/Newly) -------- */
 .best-list {
   list-style: none;
   display: grid;
@@ -409,7 +409,6 @@ body {
   font-size: 13px;
 }
 
-/* -------- Buttons -------- */
 .btn {
   display: inline-block;
   border: none;
@@ -426,16 +425,7 @@ body {
   background: #9da085;
 }
 
-/* -------- Footer -------- */
-.footer {
-  color: #6b6b6b;
-  text-align: center;
-  padding: 16px;
-  border-top: 1px solid #d8d6cf;
-  background: #ffffff;
-}
 
-/* -------- Images safety -------- */
 .main img {
   max-width: 100%;
   height: auto;
@@ -443,7 +433,6 @@ body {
   border-radius: 12px;
 }
 
-/* -------- Responsive -------- */
 @media (max-width: 1200px) {
   .cards {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
